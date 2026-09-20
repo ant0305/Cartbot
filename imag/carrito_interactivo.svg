@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1544 1600">
+  <defs>
+    <style>
+      /* Estilos para las cajas de información flotantes */
+      .tooltip {
+        opacity: 0;
+        transition: opacity 0.25s ease-in-out;
+        pointer-events: none;
+      }
+      .tooltip-bg {
+        fill: rgba(15, 23, 42, 0.92);
+        stroke: #38bdf8;
+        stroke-width: 2;
+        rx: 8;
+      }
+      .tooltip-title {
+        fill: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .tooltip-desc {
+        fill: #94a3b8;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 24px;
+      }
+
+      /* Estilos para las zonas interactivas */
+      .hotspot {
+        fill: rgba(56, 189, 248, 0.15);
+        stroke: #38bdf8;
+        stroke-width: 3;
+        stroke-dasharray: 6;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+      }
+      .hotspot:hover {
+        fill: rgba(56, 189, 248, 0.35);
+        stroke: #00f0ff;
+        stroke-dasharray: 0;
+      }
+
+      /* Mostrar tooltip al pasar el cursor */
+      .interactive-group:hover .tooltip {
+        opacity: 1;
+      }
+    </style>
+  </defs>
+
+  <image xlink:href="carrito_parte_superior.jpeg" x="0" y="0" width="1544" height="1600" />
+
+  <!-- ======================================================= -->
+  <!-- ZONAS INTERACTIVAS                                      -->
+  <!-- ======================================================= -->
+
+  <!-- 1. PORTAPILAS (Parte inferior) -->
+  <g class="interactive-group">
+    <rect class="hotspot" x="520" y="1130" width="530" height="270" rx="12" />
+    <g class="tooltip">
+      <rect class="tooltip-bg" x="520" y="1130" width="500" height="100" />
+      <text class="tooltip-title" x="540" y="1165">Portapilas / Alimentación</text>
+      <text class="tooltip-desc" x="540" y="1195">Fuente de energía principal del sistema.</text>
+    </g>
+  </g>
+
+  <!-- 2. Regulador -->
+  <g class="interactive-group">
+    <rect class="hotspot" x="900" y="820" width="200" height="290" rx="12" />
+    <g class="tooltip">
+      <rect class="tooltip-bg" x="600" y="830" width="320" height="100" />
+      <text class="tooltip-title" x="620" y="865">Convertidor DC-DC</text>
+      <text class="tooltip-desc" x="620" y="895">Regulador de energía.</text>
+    </g>
+  </g>
+
+  <!-- 3. DRIVER DE MOTORES (Módulo Rojo central) -->
+  <g class="interactive-group">
+    <rect class="hotspot" x="650" y="480" width="270" height="260" rx="12" />
+    <g class="tooltip">
+      <rect class="tooltip-bg" x="550" y="570" width="520" height="100" />
+      <text class="tooltip-title" x="570" y="605">Driver de Motores (L298N)</text>
+      <text class="tooltip-desc" x="570" y="635">Controlador Puente H para motores DC.</text>
+    </g>
+  </g>
+
+  <!-- 4. MICROCONTROLADOR -->
+  <g class="interactive-group">
+    <rect class="hotspot" x="1020" y="230" width="180" height="180" rx="12" />
+    <g class="tooltip">
+      <rect class="tooltip-bg" x="780" y="230" width="520" height="100" />
+      <text class="tooltip-title" x="800" y="265">Microcontrolador ESP32</text>
+      <text class="tooltip-desc" x="800" y="295">Crea la red wifi y ejecuta las indicaciones.</text>
+    </g>
+  </g>
+
+</svg>

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1264 1600">
+  <defs>
+    <style>
+      /* Estilos para las cajas de información flotantes */
+      .tooltip {
+        opacity: 0;
+        transition: opacity 0.25s ease-in-out;
+        pointer-events: none;
+      }
+      .tooltip-bg {
+        fill: rgba(15, 23, 42, 0.92);
+        stroke: #38bdf8;
+        stroke-width: 2;
+        rx: 8;
+      }
+      .tooltip-title {
+        fill: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .tooltip-desc {
+        fill: #94a3b8;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 24px;
+      }
+
+      /* Estilos para las zonas interactivas */
+      .hotspot {
+        fill: rgba(56, 189, 248, 0.15);
+        stroke: #38bdf8;
+        stroke-width: 3;
+        stroke-dasharray: 6;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+      }
+      .hotspot:hover {
+        fill: rgba(56, 189, 248, 0.35);
+        stroke: #00f0ff;
+        stroke-dasharray: 0;
+      }
+
+      /* Mostrar tooltip al pasar el cursor */
+      .interactive-group:hover .tooltip {
+        opacity: 1;
+      }
+    </style>
+  </defs>
+
+  <image xlink:href="carrito_parte_inferior.jpeg" x="0" y="0" width="1264" height="1600" />
+
+
+  <!-- 1. Motor izquierdo -->
+  <g class="interactive-group">
+    <rect class="hotspot" x="740" y="320" width="200" height="470" rx="12" />
+    <g class="tooltip">
+      <rect class="tooltip-bg" x="720" y="430" width="350" height="100" />
+      <text class="tooltip-title" x="740" y="465">Motor izquierdo</text>
+      <text class="tooltip-desc" x="740" y="495">Controla la rueda izquierda.</text>
+    </g>
+  </g>
+
+  <!-- 2. Rueda loca -->
+  <g class="interactive-group">
+    <rect class="hotspot" x="480" y="1200" width="250" height="250" rx="12" />
+    <g class="tooltip">
+      <rect class="tooltip-bg" x="400" y="1130" width="320" height="100" />
+      <text class="tooltip-title" x="420" y="1165">Rueda loca</text>
+      <text class="tooltip-desc" x="420" y="1195">Permite giros bruscos.</text>
+    </g>
+  </g>
+
+  <!-- 3. Motor derecho -->
+  <g class="interactive-group">
+    <rect class="hotspot" x="250" y="320" width="200" height="470" rx="12" />
+    <g class="tooltip">
+      <rect class="tooltip-bg" x="250" y="570" width="350" height="100" />
+      <text class="tooltip-title" x="270" y="605">Motor derecho</text>
+      <text class="tooltip-desc" x="270" y="635">Controla la rueda derecha.</text>
+    </g>
+  </g>
+
+
+</svg>
