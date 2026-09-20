@@ -12,7 +12,7 @@
   </defs>
 
   <!-- RUTA RELATIVA A TU IMAGEN (Asegúrate de ajustar la ruta si está en una carpeta) -->
-    <image href="carrito_parte_superior.jpeg" x="0" y="0" width="1544" height="1600" />
+    <image href="imag/carrito_parte_superior.jpeg" x="0" y="0" width="1544" height="1600" />
 
   <!-- 1. PORTAPILAS -->
   <g class="interactive-group">
