@@ -94,7 +94,7 @@ comunicación falla.
 
 
 ### Vista Superior
-[![Carrito ESP32](imag/carrito.svg)](https://ant0305.github.io/tu-repo/)
+![Carrito Vista Superior](./imag/carrito_interactivo.svg)
 
 ---
 
