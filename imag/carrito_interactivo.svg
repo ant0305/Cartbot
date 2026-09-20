@@ -2,17 +2,24 @@
   <defs>
     <style>
       .hotspot {
-        fill: rgba(56, 189, 248, 0.2);
+        fill: rgba(56, 189, 248, 0.25);
         stroke: #38bdf8;
         stroke-width: 4;
         stroke-dasharray: 6;
         cursor: pointer;
       }
+      .hotspot:hover {
+        fill: rgba(56, 189, 248, 0.45);
+        stroke: #00f0ff;
+      }
     </style>
   </defs>
 
-  <!-- RUTA RELATIVA A TU IMAGEN (Asegúrate de ajustar la ruta si está en una carpeta) -->
-    <image href="imag/carrito_parte_superior.jpeg" x="0" y="0" width="1544" height="1600" />
+  <!-- URL ABSOLUTA RAW DE GITHUB + COMPATIBILIDAD XLINK -->
+  <image 
+    xlink:href="https://raw.githubusercontent.com/ant0305/Cartbot/main/imag/carrito_parte_superior.jpeg" 
+    href="https://raw.githubusercontent.com/ant0305/Cartbot/main/imag/carrito_parte_superior.jpeg" 
+    x="0" y="0" width="1544" height="1600" />
 
   <!-- 1. PORTAPILAS -->
   <g class="interactive-group">
