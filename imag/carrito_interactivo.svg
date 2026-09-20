@@ -47,7 +47,7 @@
     </style>
   </defs>
 
-  <image xlink:href="carrito_parte_superior.jpeg" x="0" y="0" width="1544" height="1600" />
+<image href="https://raw.githubusercontent.com/ant0305/Cartbot/main/imag/carrito_parte_superior.jpeg" x="0" y="0" width="1544" height="1600" />
 
   <!-- ======================================================= -->
   <!-- ZONAS INTERACTIVAS                                      -->
