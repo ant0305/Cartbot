@@ -1,6 +1,25 @@
 # Cartbot
 Robot móvil autónomo con navegación por visión artificial, A* y planificación de misiones (TSP).
  
+
+<div align="center">
+
+|        **Autor**     | **Contacto**|
+|:---------------------------:|:---------------------:|
+|    Anthony Calvo García      |  anthonycalvo50@gmail.com |
+
+</div>
+
+## Demostración
+
+<img src="./imag/demo.gif" width="480" alt="Cartbot completando una misión">
+
+El sistema ordena los destinos con TSP, calcula la ruta con A* y corrige
+el rumbo con la cámara en cada paso.
+
+
+**Tecnologías:** Python · OpenCV · NumPy · ESP32 · Arduino IDE · TCP/WiFi
+
 ## Descripción general del dispositivo
  
 El robot autónomo navega entre distintos puntos de un escenario usando una
@@ -13,70 +32,43 @@ El sistema resuelve dos problemas distintos: **cómo** ir de un punto a otro
 esquivando obstáculos (algoritmo A*) y **en qué orden** visitar varios
 objetivos para recorrer la menor distancia posible (TSP).
  
+El sistema es capaz de reaccionar de forma dinámica, por lo que, si algún objeto se mueve durante el proceso, se recalcula la ruta apuntando a la nueva ubicación.
+
 ## Requisitos
  
 - Python con OpenCV y NumPy
-- ESP32 con Arduino core 3.x
+- ESP32
 - Cámara USB ubicada sobre el escenario
 - Marcadores ArUco (diccionario DICT_6X6_250)
-## Uso
- 
-1. `python homography.py` — calibrar la cámara (una sola vez, con la cámara ya montada)
-2. `python mision_tsp.py` — ejecutar una misión completa
-## Descripción de los archivos
- 
-### `ArUco (generador)`
-Genera los marcadores ArUco que se usan para ubicar tanto al carrito como a
-los objetivos.
- 
-### `Camara`
-Comprueba la correcta integración de la cámara USB con la computadora.
- 
-### `aruco_detector`
-Detecta los marcadores ArUco en la imagen y calcula su centro y orientación.
-Otros módulos lo usan como base para la localización.
- 
-### `homography`
-Convierte los pixeles provenientes de la camara en coordenadas las cuales son utilizadas para la ubicacion de los objetos.
- 
-### `localizador`
-Asigna a cada objeto (representado por un ArUco) su posición en el mapa.
- 
-### `mapa`
-Reconstruye el mapa lógico, que cambia dinámicamente conforme se mueven los
-objetos del escenario. Marca cada edificio como obstáculo e infla un margen
-de seguridad alrededor por el tamaño del carrito.
- 
-### `planner`
-Implementa el algoritmo A*, que calcula la ruta más corta entre dos puntos
-del mapa esquivando obstáculos.
- 
-### `vista_ruta`
-Calcula la celda de aproximación al frente de cada edificio y dibuja la ruta
-sobre el mapa. La ruta se recalcula en cada cuadro, así que los objetos se
-pueden mover durante la operación.
- 
-### `control`
-Controla el carrito en lazo cerrado: corrige el rumbo en cada paso con la
-visión para que llegue y se detenga en el lugar requerido.
- 
-### `tsp`
-Calcula el orden óptimo para visitar varios objetivos, minimizando la
-distancia total de recorrido.
- 
-### `mision_tsp`
-Integra todo el sistema: permite elegir varios destinos, ordenarlos con el
-TSP y ejecutar la misión completa. Reúne los demás módulos (mapa, planner,
-control, tsp) en una sola aplicación.
- 
-### `teleop`
-Opera el carrito de forma manual, para comprobar que el hardware y la
-comunicación funcionan antes de la navegación autónoma.
- 
-### `carrito_esp32 (firmware)`
-Firmware del ESP32: crea una red WiFi propia, recibe los comandos por TCP y
-controla los motores con el driver L298N.
- 
+
+## Instalación y uso
+
+```bash
+pip install opencv-python numpy
+```
+
+1. Cargar `carrito_esp32.ino` en el ESP32 y conectar la computadora a la red `CarritoIA`.
+2. `python homography.py` — calibrar la cámara (una sola vez, con la cámara ya montada).
+3. `python mision_tsp.py` — elegir destinos y ejecutar una misión completa.
+
+
+## Estructura del proyecto
+
+| Archivo | Función |
+|---|---|
+| `ArUco.py` | Genera los marcadores ArUco del carrito y de los objetivos. |
+| `Camara.py` | Comprueba la conexión de la cámara USB con la computadora. |
+| `aruco_detector.py` | Detecta los marcadores y calcula su centro y orientación. |
+| `homography.py` | Convierte los píxeles de la cámara en coordenadas reales del piso. |
+| `localizador.py` | Asigna a cada marcador su celda en el mapa. |
+| `mapa.py` | Reconstruye el mapa lógico en cada cuadro e infla un margen de seguridad alrededor de los obstáculos. |
+| `planner.py` | Algoritmo A*: ruta más corta entre dos celdas esquivando obstáculos. |
+| `vista_ruta.py` | Calcula la celda de llegada al frente de cada objetivo y dibuja la ruta. |
+| `tsp.py` | Calcula el orden óptimo de visita de varios objetivos. |
+| `control.py` | Control en lazo cerrado: corrige el rumbo en cada paso con la visión. |
+| `mision_tsp.py` | Programa principal: integra todos los módulos y ejecuta la misión. |
+| `teleop.py` | Control manual para probar el hardware y la comunicación. |
+
  
 ## Código en el ESP32
  
@@ -87,14 +79,12 @@ comunicación falla.
  
  
  
-## Imagenes del carrito.
+## Imágenes del carrito
  
  
-### Vista Superior
-<img src="./imag/carrito_interactivo.svg" width="480" alt="Carrito Vista Superior">
----
+### Vista superior
+<img src="./imag/carrito_interactivo.svg" width="480" alt="Carrito vista superior">
  
-### Vista Secundaria / Perspectiva
-<img src="./imag/carrito_interactivo_2.svg" width="480" alt="Carrito Vista 2">
-
+### Vista inferior
+<img src="./imag/carrito_interactivo_2.svg" width="480" alt="Carrito vista inferior">
 
